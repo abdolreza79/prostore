@@ -25,8 +25,8 @@ const CredentialsSignInForm = () => {
   const form = useForm<z.infer<typeof signInFormSchema>>({
     resolver: zodResolver(signInFormSchema),
     defaultValues: {
-      email: "admin@example.com",
-      password: "123456",
+      email: "",
+      password: "",
     },
   });
 

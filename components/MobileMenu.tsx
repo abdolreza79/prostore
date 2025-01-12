@@ -35,6 +35,12 @@ const MobileMenu = async () => {
               <span className="text-sm text-gray-500">
                 {session.user?.email}
               </span>
+              <form action={signOutUser} className="w-full">
+                <Button type="submit" size="sm" className="w-full">
+                  {/* <UserIcon className="w-6 h-6" /> */}
+                  Sign Out
+                </Button>
+              </form>
             </div>
           ) : (
             <Button size="sm" asChild>
@@ -45,12 +51,6 @@ const MobileMenu = async () => {
             </Button>
           )}
           <SheetDescription></SheetDescription>
-          <form action={signOutUser} className="w-full">
-            <Button type="submit" size="sm" className="w-full">
-              {/* <UserIcon className="w-6 h-6" /> */}
-              Sign Out
-            </Button>
-          </form>
         </SheetContent>
       </Sheet>
     </div>
