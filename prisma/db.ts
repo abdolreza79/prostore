@@ -25,6 +25,7 @@ const prismaClientSingleton = () => {
       },
     },
   });
+  // return new PrismaClient();
 };
 
 declare const globalThis: {

@@ -9,8 +9,11 @@ import {
 import { EllipsisVertical, ShoppingCart, UserIcon } from "lucide-react";
 import Link from "next/link";
 import { ModeToggle } from "./shared/header/mode-toggle-btn";
+import { auth } from "@/auth";
+import { signOutUser } from "@/lib/actions/user";
 
-const MobileMenu = () => {
+const MobileMenu = async () => {
+  const session = await auth();
   return (
     <div className="md:hidden">
       <Sheet>
@@ -26,19 +29,28 @@ const MobileMenu = () => {
               Cart
             </Link>
           </Button>
-          <Button size="sm" asChild>
-            <Link href="/sign-in">
-              <UserIcon className="w-6 h-6" />
-              Sign In
-            </Link>
-          </Button>
-          <SheetDescription>M</SheetDescription>
-
-          {/* <SheetFooter>
-          <SheetClose asChild>
-            <Button type="submit">Save changes</Button>
-          </SheetClose>
-        </SheetFooter> */}
+          {session ? (
+            <div className="flex flex-col">
+              <span>{session.user?.name}</span>
+              <span className="text-sm text-gray-500">
+                {session.user?.email}
+              </span>
+            </div>
+          ) : (
+            <Button size="sm" asChild>
+              <Link href="/sign-in">
+                <UserIcon className="w-6 h-6" />
+                Sign In
+              </Link>
+            </Button>
+          )}
+          <SheetDescription></SheetDescription>
+          <form action={signOutUser} className="w-full">
+            <Button type="submit" size="sm" className="w-full">
+              {/* <UserIcon className="w-6 h-6" /> */}
+              Sign Out
+            </Button>
+          </form>
         </SheetContent>
       </Sheet>
     </div>

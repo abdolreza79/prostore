@@ -1,4 +1,20 @@
+import { hashSync } from "bcrypt-ts-edge";
+
 const sampleData = {
+  users: [
+    {
+      name: "John",
+      email: "admin@example.com",
+      password: hashSync("123456", 10),
+      role: "admin",
+    },
+    {
+      name: "Jane",
+      email: "user@example.com",
+      password: hashSync("123456", 10),
+      role: "user",
+    },
+  ],
   products: [
     {
       name: "Polo Sporting Stretch Shirt",
@@ -11,7 +27,7 @@ const sampleData = {
       ],
       price: 59.99,
       brand: "Polo",
-      rating: 3.5,
+      rating: 2.5,
       numReviews: 10,
       stock: 5,
       isFeatured: true,
@@ -28,7 +44,7 @@ const sampleData = {
       ],
       price: 85.9,
       brand: "Brooks Brothers",
-      rating: 1.2,
+      rating: 3.2,
       numReviews: 8,
       stock: 10,
       isFeatured: true,
@@ -45,7 +61,7 @@ const sampleData = {
       ],
       price: 99.95,
       brand: "Tommy Hilfiger",
-      rating: 4.9,
+      rating: 2.9,
       numReviews: 3,
       stock: 0,
       isFeatured: false,
@@ -62,7 +78,7 @@ const sampleData = {
       ],
       price: 39.95,
       brand: "Calvin Klein",
-      rating: 2.6,
+      rating: 3.6,
       numReviews: 5,
       stock: 10,
       isFeatured: false,
@@ -79,7 +95,7 @@ const sampleData = {
       ],
       price: 79.99,
       brand: "Polo",
-      rating: 3.7,
+      rating: 4.7,
       numReviews: 18,
       stock: 6,
       isFeatured: false,
@@ -96,7 +112,7 @@ const sampleData = {
       ],
       price: 99.99,
       brand: "Polo",
-      rating: 5,
+      rating: 4,
       numReviews: 12,
       stock: 8,
       isFeatured: true,

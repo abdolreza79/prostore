@@ -30,3 +30,20 @@ export const insertProductSchema = z.object({
   isFeatured: z.boolean(),
   banner: z.string().nullable(),
 });
+
+export const signInFormSchema = z.object({
+  email: z.string().email("Invalid Email address"),
+  password: z.string().min(6, "Password must be atleast 6 characters"),
+});
+
+export const signUpFormSchema = z
+  .object({
+    name: z.string().min(3, "name must be atleast 3 characters"),
+    email: z.string().email("Invalid Email address"),
+    password: z.string().min(6, "Password must be atleast 6 characters"),
+    passwordConfirm: z.string(),
+  })
+  .refine(({ password, passwordConfirm }) => password === passwordConfirm, {
+    message: "password and passwordConfirm does not match",
+    path: ["passwordConfirm"],
+  });

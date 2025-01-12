@@ -1,9 +1,11 @@
-import { ShoppingCart, UserIcon } from "lucide-react";
+import { ShoppingCart } from "lucide-react";
 import { ModeToggle } from "./shared/header/mode-toggle-btn";
 import { Button } from "./ui/button";
 import Link from "next/link";
 
-const DesktopMenu = () => {
+import UserButton from "./shared/header/user-button";
+
+const DesktopMenu = async () => {
   return (
     <div className="hidden md:flex items-center md:gap-3">
       <Button variant="ghost" asChild>
@@ -12,12 +14,7 @@ const DesktopMenu = () => {
           Cart
         </Link>
       </Button>
-      <Button size="sm" asChild>
-        <Link href="/sign-in">
-          <UserIcon className="w-6 h-6" />
-          Sign In
-        </Link>
-      </Button>
+      <UserButton />
       <ModeToggle />
     </div>
   );
